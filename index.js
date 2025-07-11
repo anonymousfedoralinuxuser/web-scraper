@@ -1,16 +1,9 @@
 const express = require('express');
-const https = require('https');
-const fs = require('fs');
 const axios = require('axios');
 const cheerio = require('cheerio');
 
 const app = express();
-const PORT = 443;
-
-const credentials = {
-  key: fs.readFileSync('./cert/key.pem'),
-  cert: fs.readFileSync('./cert/cert.pem'),
-};
+const PORT = 3000;
 
 app.use(express.json());
 
@@ -38,6 +31,6 @@ app.get('/scrape', async (req, res) => {
   }
 });
 
-https.createServer(credentials, app).listen(PORT, () => {
-  console.log(`HTTPS Web Scraper API running at https://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Web Scraper running at http://localhost:${PORT}`);
 });
