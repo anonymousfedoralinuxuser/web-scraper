@@ -1,4 +1,4 @@
-# Web Scraper API
+# Feroz's Web Scraper API
 
 ## Usage
 
