@@ -1,10 +1,13 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/scrape', async (req, res) => {
@@ -20,6 +23,7 @@ app.get('/scrape', async (req, res) => {
     const title = $('title').text();
     const description = $('meta[name="description"]').attr('content') || '';
     const links = [];
+
     $('a').each((_, el) => {
       const href = $(el).attr('href');
       if (href) links.push(href);
@@ -32,5 +36,5 @@ app.get('/scrape', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Web Scraper running at http://localhost:${PORT}`);
+  console.log(`✅ Web Scraper running at http://localhost:${PORT}`);
 });
