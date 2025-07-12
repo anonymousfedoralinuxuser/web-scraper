@@ -36,5 +36,5 @@ app.get('/scrape', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Web Scraper running at http://localhost:${PORT}`);
+  console.log(`Web Scraper running at http://localhost:${PORT}`);
 });
